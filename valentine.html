@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charSet="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="icon" href="https://www.favicon.cc/favicon/814/1005/favicon.ico" type="image/x-icon"/>
+  <title>Valentine's Day Card</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    img {
+      height: 200px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    button {
+      font-size: 16px;
+      margin: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #FFFFFF;
+      border: none;
+      outline: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    .bg-green {
+      background-color: #22C55E;
+    }
+
+    .bg-green:hover {
+      background-color: #1E9C4F;
+    }
+
+    .bg-red {
+      background-color: #EF4444;
+    }
+
+    .bg-red:hover {
+      background-color: #D73737;
+    }
+
+    #yesButton {
+      transition: font-size 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif"/>
+  <h1>Will you be my Valentine?</h1>
+
+  <div class="button-container">
+    <button id="yesButton" class="bg-green hover:bg-green text-white font-bold rounded" onclick="loadYesContent()">Yes</button>
+    <button id="noButton" class="bg-red hover:bg-red text-white font-bold rounded" onclick="loadNoContent()">No</button>
+  </div>
+
+  <script>
+    let noButtonClickCount = 0;
+
+    const noButtonMessages = [
+      "Are you sure?", "Really sure?", "Are you positive???",
+      "Pookie please", "Just think about it", "If you say no, I'll be very sad",
+      "I'll be very very sad", "I'll be very very very sad", "I'll be very very very very sad",
+      "Ok fine, I'll stop asking...", "Just kidding, PLEASE SAY YES",
+      "I'll be very very very very very sad", "You're breaking my heart ;(", "No"
+    ];
+
+    function loadYesContent() {
+      document.body.innerHTML = `
+        <div style="text-align: center; margin-top: 50px;">
+          <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" style="height: 200px;">
+          <h1 style="font-size: 24px; margin-top: 10px;">Ok yay!!!</h1>
+        </div>
+      `;
+    }
+
+    function loadNoContent() {
+      const yesButton = document.getElementById("yesButton");
+      const currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+      yesButton.style.fontSize = `${currentSize + 20}px`;
+
+      const noButton = document.getElementById("noButton");
+      noButton.textContent = noButtonMessages[noButtonClickCount % noButtonMessages.length];
+      noButtonClickCount++;
+    }
+  </script>
+</body>
+</html>
